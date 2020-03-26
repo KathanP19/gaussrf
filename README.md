@@ -11,7 +11,7 @@ _  / __ __  /| |  / / /    _____ \_____ \__  /_/ /_  /_
 
 
 ```
-Fetch known URLs from AlienVault's Open Threat Exchange, the Wayback Machine, and Common Crawl and Filter Urls With OpenRedirection or SSRF Parameters.
+Fetch known URLs from AlienVault's Open Threat Exchange, the Wayback Machine, and Common Crawl and Filter Urls With OpenRedirection or SSRF Parameters. This Tool was built to present in Null Ahmedabad [Deep Dive into SSRF](https://null.co.in/event_sessions/3086-deep-dive-into-ssrf) you can get slides from the link.
 
 ## Prerequisites
 
