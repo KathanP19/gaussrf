@@ -37,3 +37,7 @@ $ ./ssrf domain.com
 Thanks @tomnomom for [Assetfinder,Anti-burl](https://github.com/tomnomnom)!
 
 Thanks @lc for [GAU](https://github.com/lc/gau)!
+
+### TODO list
+
+Integrate [ffuf](https://github.com/ffuf/ffuf) to fuzz params with burp collab url.
