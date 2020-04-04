@@ -19,6 +19,11 @@ Fetch known URLs from AlienVault's Open Threat Exchange, the Wayback Machine, an
 * [Assetfinder](https://github.com/tomnomnom/assetfinder) - For Subdomain Enumeration
 * [Anti-burl](https://github.com/tomnomnom/hacks/tree/master/anti-burl) - For check if url is live or not.
 
+You can now use install.sh to install require tools, this tools where made in go it should be installed in your system and dont forget to set path of go properly.
+```bash
+$ sudo chmod +x install.sh
+$ ./install.sh
+```
 ### Installation
 
 ```bash
