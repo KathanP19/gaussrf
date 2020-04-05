@@ -17,45 +17,54 @@ logo(){
 ${reset}"
 }
 
-kill(){
+killit(){
         logo
         echo "Usage : ./ssrf.sh domain.com"
+        echo "Usage : ./ssrf.sh domain.com -o output_directory"
+        echo "Usage : ./ssrf.sh domain.com --ouput output_directory"
         exit 1
 }
 
 recon(){
 logo
-mkdir -p recon
-mkdir -p recon/$1
 
 ##Getting SubDomains
 echo -e "\nRUNNING \e[31m[assetfinder]\e[0m"
-assetfinder --subs-only $1 > ./recon/$1/$1.assetfinder.txt
-cat ./recon/$1/$1.assetfinder.txt | sort -u > ./recon/$1/subs.txt
-echo "FOUND SUBDOMAINS [$(cat ./recon/$1/subs.txt | wc -l)]"
+assetfinder --subs-only $1 > $output_directory/$1/$1.assetfinder.txt
+cat $output_directory/$1/$1.assetfinder.txt | sort -u > $output_directory/$1/subs.txt
+echo "FOUND SUBDOMAINS [$(cat $output_directory/$1/subs.txt | wc -l)]"
 echo -e "RUNNING ASSETFINDER \e[32mFINISH\e[0m"
 
 ##Starting GETALLURLS
 echo -e "\nRUNNING \e[31m[GAU]\e[0m"
-cat  ./recon/$1/subs.txt | gau > ./recon/$1/$1.urls.txt
+cat  $output_directory/$1/subs.txt | gau > $output_directory/$1/$1.urls.txt
 echo -e "RUNNING GAU \e[32mFINISH\e[0m"
 
 echo "${red} ---------------COLLECTED URLS OF SUBDOMAINS--------------- ${reset}"
 
 ##Checking urls with anti-burl
 echo -e "\nRUNNING \e[31m[anti-burl]\e[0m"
-cat ./recon/$1/$1.urls.txt | grep "=http" | anti-burl | tee ./recon/$1/$1.ssrf.txt
+cat $output_directory/$1/$1.urls.txt | grep "=http" | anti-burl | tee $output_directory/$1/$1.ssrf.txt
+
 echo -e "RUNNING Anti-burl \e[32mFINISH\e[0m"
 
 ##Cleaning the list for urls
 echo -e "\nCleaning \e[31m[LIST]\e[0m"
-cat ./recon/$1/$1.ssrf.txt | sed 's/[^http]*\(http.*\)/\1/' > ./recon/$1/$1.params_urls.txt
-echo "FOUND POSSIBLE SSRF URLS [$(cat ./recon/$1/$1.params_urls.txt | wc -l)]"
+cat $output_directory/$1/$1.ssrf.txt | sed 's/[^http]*\(http.*\)/\1/' > $output_directory/$1/$1.params_urls.txt
+echo "FOUND POSSIBLE SSRF URLS [$(cat $output_directory/$1/$1.params_urls.txt | wc -l)]"
 echo "${red} --------------DONE---------------- ${reset}"
 }
-if [ -z "$1" ]
+
+if [[ -z "$1" || $1 == "-h" || $1 == "--help" ]]
         then
-                kill
+                killit
+elif [[ $2 == "-o" || $2 == "--output" ]]
+then
+  output_directory="$3/gaussrf/recon/"
+  mkdir -p "$output_directory"/"$1"
+  recon $1
 else
-        recon $1
+  output_directory="recon"
+  mkdir -p "$output_directory"/"$1"
+  recon $1
 fi
