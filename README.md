@@ -38,8 +38,8 @@ $ ./ssrf.sh domain.com
 ```
 If you want to save results in other directory `~/yourdirpath/gaussrf/recon/domain.com`
 ```bash
-$ ./ssrf.sh domain.com -o results_directory
-$ ./ssrf.sh domain.com --output results_directory
+$ ./ssrf.sh domain.com -o output_directory
+$ ./ssrf.sh domain.com --output output_directory
 ```
 
 ## Credits:
