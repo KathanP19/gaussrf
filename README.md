@@ -32,10 +32,14 @@ $ cd gaussrf/
 $ sudo chmod +x ssrf.sh
 ``` 
 ### Usage
-
+If you want to save results in default directory `./recon/domain.com`
 ```bash
-$ ./ssrf domain.com
-
+$ ./ssrf.sh domain.com
+```
+If you want to save results in other directory `~/yourdirpath/gaussrf/recon/domain.com`
+```bash
+$ ./ssrf.sh domain.com -o results_directory
+$ ./ssrf.sh domain.com --output results_directory
 ```
 
 ## Credits:
@@ -46,3 +50,6 @@ Thanks @lc for [GAU](https://github.com/lc/gau)!
 ### TODO list
 
 Integrate [ffuf](https://github.com/ffuf/ffuf) to fuzz params with burp collab url.
+
+## Contributors
+[@iNoSec2](https://github.com/iNoSec2) for adding output option.
