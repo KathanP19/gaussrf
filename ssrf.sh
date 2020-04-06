@@ -21,7 +21,7 @@ killit(){
         logo
         echo "Usage : ./ssrf.sh domain.com"
         echo "Usage : ./ssrf.sh domain.com -o output_directory"
-        echo "Usage : ./ssrf.sh domain.com --ouput output_directory"
+        echo "Usage : ./ssrf.sh domain.com --output output_directory"
         exit 1
 }
 
