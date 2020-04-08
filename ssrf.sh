@@ -52,7 +52,7 @@ echo -e "RUNNING Anti-burl \e[32mFINISH\e[0m"
 echo -e "\nCleaning \e[31m[LIST]\e[0m"
 cat $output_directory/$1/$1.ssrf.txt | sed 's/[^http]*\(http.*\)/\1/' > $output_directory/$1/$1.params_urls.txt
 echo "FOUND POSSIBLE SSRF URLS [$(cat $output_directory/$1/$1.params_urls.txt | wc -l)]"
-echo "${red} --------------DONE---------------- ${reset}"
+echo -e "Cleaning list \e[32mFINISH\e[0m"
 
 ##FUZZ
 echo -e "\nHope You Have Added Burp Collab Url In burp.txt Fuzzing\e[31m[LIST]\e[0m"
