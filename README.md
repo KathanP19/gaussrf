@@ -51,7 +51,7 @@ Thanks @lc for [GAU](https://github.com/lc/gau)!
 
 ### TODO list
 
-Integrate [ffuf](https://github.com/ffuf/ffuf) to fuzz params with burp collab url.
+~~Integrate [ffuf](https://github.com/ffuf/ffuf) to fuzz params with burp collab url.~~
 
 ## Contributors
 [@iNoSec2](https://github.com/iNoSec2) for adding output option.
