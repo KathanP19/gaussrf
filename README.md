@@ -33,6 +33,7 @@ $ sudo chmod +x ssrf.sh
 ``` 
 ### Usage
 Dont Forget to put your blind ssrf testing link or burp collab link in `burp.txt`
+
 If you want to save results in default directory `./recon/domain.com`
 ```bash
 $ ./ssrf.sh domain.com
