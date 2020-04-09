@@ -44,19 +44,19 @@ echo "${red} ---------------COLLECTED URLS OF SUBDOMAINS--------------- ${reset}
 
 ##Checking urls with anti-burl
 echo -e "\nRUNNING \e[31m[anti-burl]\e[0m"
-cat $output_directory/$1/$1.urls.txt | grep "=http" | anti-burl | tee $output_directory/$1/$1.ssrf.txt
+cat $output_directory/$1/$1.urls.txt | grep "=http" | anti-burl | tee $output_directory/$1/$1.urls_with_params.txt
 
 echo -e "RUNNING Anti-burl \e[32mFINISH\e[0m"
 
 ##Cleaning the list for urls
 echo -e "\nCleaning \e[31m[LIST]\e[0m"
-cat $output_directory/$1/$1.ssrf.txt | sed 's/[^http]*\(http.*\)/\1/' > $output_directory/$1/$1.params_urls.txt
-echo "FOUND POSSIBLE SSRF URLS [$(cat $output_directory/$1/$1.params_urls.txt | wc -l)]"
+cat $output_directory/$1/$1.urls_with_params.txt | sed 's/[^http]*\(http.*\)/\1/' > $output_directory/$1/$1.ssrf_testing.txt
+echo "FOUND POSSIBLE SSRF URLS [$(cat $output_directory/$1/$1.ssrf_testing.txt | wc -l)]"
 echo -e "Cleaning list \e[32mFINISH\e[0m"
 
 ##FUZZ
 echo -e "\nHope You Have Added Burp Collab Url In burp.txt Fuzzing\e[31m[LIST]\e[0m"
-cat $output_directory/$1/$1.params_urls.txt | qsreplace FUZZ > $output_directory/$1/fuzzable.txt
+cat $output_directory/$1/$1.ssrf_testing.txt | qsreplace FUZZ > $output_directory/$1/fuzzable.txt
 ffuf -w ./burp.txt -w $output_directory/$1/fuzzable.txt:DOMAIN -u DOMAIN:FUZZ -v
 echo "${red} --------------DONE---------------- ${reset}"
 }
