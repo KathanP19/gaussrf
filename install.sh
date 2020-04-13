@@ -13,10 +13,12 @@ echo -e "\nINSTALLING \e[31m[GAU]\e[0m"
 go get -u github.com/lc/gau
 echo -e "\nINSTALLING GAU \e[32mFINISH\e[0m"
 
-##Install Anti-burl
-echo -e "\nINSTALLING \e[31m[Anti-burl]\e[0m"
-go get -u github.com/tomnomnom/hacks/anti-burl
-echo -e "\nINSTALLING Anti-burl \e[32mFINISH\e[0m"
+##Installing Drishti
+echo -e "\nINSTALLING \e[31m[Drishti]\e[0m"
+git clone https://github.com/devanshbatham/Drishti
+cd Drishti
+pip3 install -r requirements.txt
+echo -e "\nINSTALLING Drishti \e[32mFINISH\e[0m"
 
 ##Install qsreplace
 echo -e "\nINSTALLING \e[31m[QSreplace]\e[0m"
