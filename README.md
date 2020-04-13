@@ -17,7 +17,7 @@ Fetch known URLs from AlienVault's Open Threat Exchange, the Wayback Machine, an
 
 * [GetAllUrls](https://github.com/lc/gau) - For Fetching Urls
 * [Assetfinder](https://github.com/tomnomnom/assetfinder) - For Subdomain Enumeration
-* [Anti-burl](https://github.com/tomnomnom/hacks/tree/master/anti-burl) - For check if url is live or not.
+* [Drishti](https://github.com/devanshbatham/Drishti) - For check if url is live or not.
 
 You can now use install.sh to install require tools, this tools where made in go it should be installed in your system and dont forget to set path of go properly.
 ```bash
@@ -45,7 +45,9 @@ $ ./ssrf.sh domain.com --output output_directory
 ```
 
 ## Credits:
-Thanks @tomnomom for [Assetfinder,Anti-burl](https://github.com/tomnomnom)!
+Thanks @tomnomom for [Assetfinder](https://github.com/tomnomnom)!
+
+Thanks @devanshbatham for [Drishti](https://github.com/devanshbatham/Drishti)!
 
 Thanks @lc for [GAU](https://github.com/lc/gau)!
 
