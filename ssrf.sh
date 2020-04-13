@@ -57,7 +57,7 @@ echo -e "Cleaning list \e[32mFINISH\e[0m"
 ##FUZZ
 echo -e "\nHope You Have Added Burp Collab Url In burp.txt Fuzzing\e[31m[LIST]\e[0m"
 cat $output_directory/$1/$1.ssrf_testing.txt | qsreplace FUZZ > $output_directory/$1/fuzzable.txt
-ffuf -w ./burp.txt -w $output_directory/$1/fuzzable.txt:DOMAIN -u DOMAIN:FUZZ -v
+cat $output_directory/$1/fuzzable.txt | while read url;do ffuf -w ./burp.txt -u "$url" -v;done
 echo "${red} --------------DONE---------------- ${reset}"
 }
 
