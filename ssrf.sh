@@ -43,7 +43,7 @@ echo -e "RUNNING GAU \e[32mFINISH\e[0m"
 echo "${red} ---------------COLLECTED URLS OF SUBDOMAINS--------------- ${reset}"
 
 ##Filter Urls to check with drishti
-echo -e "\nRUNNING \e[31m[anti-burl]\e[0m"
+echo -e "\n\e[31m[Filtering Urls with params]\e[0m"
 cat $output_directory/$1/$1.urls.txt | grep "=http" | tee $output_directory/$1/$1.urls_with_params.txt
 echo -e "Filtering Urls with params completed \e[32mFINISH\e[0m"
 
@@ -51,9 +51,11 @@ echo -e "Filtering Urls with params completed \e[32mFINISH\e[0m"
 echo -e "\nChecking for Live Urls \e[31m[LIST]\e[0m"
 cp $output_directory/$1/$1.urls_with_params.txt ./Drishti/
 mv ./Drishti/$1.urls_with_params.txt ./Drishti/raw_urls.txt
-python3 ./Drishti/drishti.py
-cp ./Drishti/Results-200.txt $output_directory/$1/
+cd ./Drishti
+python3 drishti.py
+cp Results-200.txt $output_directory/$1/
 rm raw_urls.txt
+cd ..
 echo "FOUND POSSIBLE SSRF URLS [$(cat $output_directory/$1/Results-200.txt | wc -l)]"
 echo -e "Checking for Live Urls \e[32mFINISH\e[0m"
 
