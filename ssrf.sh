@@ -50,7 +50,7 @@ echo -e "Filtering Urls with params completed \e[32mFINISH\e[0m"
 ##Cleaning the list for urls
 echo -e "\nChecking for Live Urls \e[31m[LIST]\e[0m"
 cp $output_directory/$1/$1.urls_with_params.txt ./Drishti/
-mv $1.urls_with_params.txt raw_urls.txt
+mv ./Drishti/$1.urls_with_params.txt ./Drishti/raw_urls.txt
 python3 ./Drishti/drishti.py
 cp ./Drishti/Results-200.txt $output_directory/$1/
 rm raw_urls.txt
