@@ -54,7 +54,7 @@ mv ./Drishti/$1.urls_with_params.txt ./Drishti/raw_urls.txt
 cd ./Drishti
 python3 drishti.py
 cd ..
-cp Results-200.txt $output_directory/$1/
+cp ./Drishti/Results-200.txt $output_directory/$1/
 rm ./Drishti/raw_urls.txt
 echo "FOUND POSSIBLE SSRF URLS [$(cat $output_directory/$1/Results-200.txt | wc -l)]"
 echo -e "Checking for Live Urls \e[32mFINISH\e[0m"
