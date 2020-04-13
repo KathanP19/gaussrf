@@ -18,6 +18,8 @@ echo -e "\nINSTALLING \e[31m[Drishti]\e[0m"
 git clone https://github.com/devanshbatham/Drishti
 cd Drishti
 pip3 install -r requirements.txt
+rm raw_urls.txt
+cd ..
 echo -e "\nINSTALLING Drishti \e[32mFINISH\e[0m"
 
 ##Install qsreplace
