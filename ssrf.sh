@@ -62,7 +62,7 @@ echo -e "Checking for Live Urls \e[32mFINISH\e[0m"
 ##FUZZ
 echo -e "\nHope You Have Added Burp Collab Url In burp.txt Fuzzing\e[31m[LIST]\e[0m"
 cat $output_directory/$1/Results-200.txt | qsreplace FUZZ > $output_directory/$1/fuzzable.txt
-cat $output_directory/$1/fuzzable.txt | while read url;do ffuf -w ./burp.txt -u "$url" -v;done
+ffuf -w "$output_directory/$1/fuzzable.txt:URL" -w burp.txt -u URLFUZZ -v
 echo "${red} --------------DONE---------------- ${reset}"
 }
 
