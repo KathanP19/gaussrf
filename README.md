@@ -58,6 +58,8 @@ Thanks @devanshbatham for [Drishti](https://github.com/devanshbatham/Drishti)!
 
 Thanks @lc for [GAU](https://github.com/lc/gau)!
 
+Thanks @hussein98d for parameter appending feature.
+
 ### TODO list
 
 ~~Integrate [ffuf](https://github.com/ffuf/ffuf) to fuzz params with burp collab url.~~
