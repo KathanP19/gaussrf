@@ -42,9 +42,15 @@ $ ./ssrf.sh domain.com
 If you want to save results in other directory `~/output_directory/gaussrf/recon/domain.com`
 ```bash
 $ ./ssrf.sh domain.com -o output_directory
-$ ./ssrf.sh domain.com --output output_directory
 ```
-
+If you want to use parameter appending feature of the script shared by [HusseiN98D](https://twitter.com/HusseiN98D/status/1258217821693190154)!
+```
+$ ./ssrf.sh domain.com -ap
+```
+Or if you want to use both `-o` and `-ap`
+```
+$ ./ssrf.sh domain.com -o output_directory -ap
+```
 ## Credits:
 Thanks @tomnomom for [Assetfinder](https://github.com/tomnomnom)!
 
