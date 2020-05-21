@@ -35,21 +35,34 @@ $ sudo chmod +x ssrf.sh
 Dont Forget to put your blind ssrf testing link or burp collab link in `burp.txt`
 or you can use thi site [SSRFTest](https://ssrftest.com/) if you dont have BurpPro
 
-If you want to save results in default directory `./recon/domain.com`
-```bash
-$ ./ssrf.sh domain.com
 ```
-If you want to save results in other directory `~/output_directory/gaussrf/recon/domain.com`
-```bash
-$ ./ssrf.sh domain.com -o output_directory
+          ____________________  __   ________________________________
+          __  ____/__    |_  / / /   __  ___/_  ___/__  __ \__  ____/
+          _  / __ __  /| |  / / /    _____ \_____ \__  /_/ /_  /_
+          / /_/ / _  ___ / /_/ /     ____/ /____/ /_  _, _/_  __/
+          \____/  /_/  |_\____/      /____/ /____/ /_/ |_| /_/
+
+
+
+
+Usage: For Using directly where subdomains will be found using Assetfinder
+      ./ssrf.sh -d domain.com
+      ./ssrf.sh -d domain.com -o output_directory
+      ./ssrf.sh -d domain.com -ap
+      ./ssrf.sh -d domain.com -o output_directory -ap
+
+Usage: For Using list of Subdomains
+      ./ssrf.sh -l subdomains.txt
+      ./ssrf.sh -l subdomains.txt -o output_directory
+      ./ssrf.sh -l subdomains.txt -ap
+      ./ssrf.sh -l subdomains.txt -o output_directory -ap
 ```
-If you want to use parameter appending feature of the script shared by [HusseiN98D](https://twitter.com/HusseiN98D/status/1258217821693190154)!
 ```
-$ ./ssrf.sh domain.com -ap
-```
-Or if you want to use both `-o` and `-ap`
-```
-$ ./ssrf.sh domain.com -o output_directory -ap
+Options are as follows 
+  -d  for direct letting assetfinder handle subdomain part
+  -l  for using list of subdomains
+  -o  for declaring output directory
+  -ap for using parameter appending feature
 ```
 ## Credits:
 Thanks @tomnomom for [Assetfinder](https://github.com/tomnomnom)!
