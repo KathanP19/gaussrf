@@ -77,7 +77,7 @@ Thanks @hussein98d for parameter appending feature.
 
 ~~Integrate [ffuf](https://github.com/ffuf/ffuf) to fuzz params with burp collab url.~~
 
-Add Option For User to Add there own subdoamin list.
+~~Add Option For User to Add there own subdoamin list.~~
 
 ## Contributors
 [@iNoSec2](https://github.com/iNoSec2) for adding output option.
